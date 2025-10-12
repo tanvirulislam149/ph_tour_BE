@@ -1,0 +1,32 @@
+1. npm init -y
+2. npm install express --save
+3. npm install typescript --save-dev
+4. tsc --init  for creating tsconfig.json file
+5. in tsconfig.ts file, search for rootDir > uncomment it > write "./src" as it's value
+6. again search for outDir > uncomment > write "./dist" as it's value where the compiled js files stored
+7. create src folder and inside it create app.ts and copy paste the basic server code from express doc
+8. npm i --save-dev @types/node @types/express
+9. now import express removing the require syntax
+10. in package.json > "scripts" > write "build": "tsc", It will compile and convert the ts file into js file 
+11. to run, npm run build > node ./dist/app.js but after editing something we have to do this again
+12. create a server.ts file > put the app.listen() here
+13. install dotenv > create .env file > put PORT there > import on server.ts 
+14. install mongoDB, mongoose > go to mongoose doc > copy and paste the main() db connect function in server.js
+15. create DB using mongoDB > connect using mongodb drivers > give network access to allow from anywhere
+16. put app.listen() inside main() function and call the function
+17. main().then(() => clg("connected")).catch((error) => clg(error)) write this to be sure about DB connection
+18. install ts-node-dev > write scripts in package.json > "start:dev": "..." (copy from ts-node-dev doc and 
+change the server.ts file location to "./src/server.ts")
+19. write "start": node ./dist/server.js > write "./dist/server.js" in main script
+20. run > npm run start:dev    this will start a nonstop server like nodemon
+21. Rules for API development: Interface > Model and mongoose schema > Zod validation schema > routes > controllers > services
+22. Folder structure:
+        src
+            app 
+                modules
+                    products
+                        - products.interface.ts
+                        - products.model.ts 
+            - app.ts
+            - server.ts 
+23. 
