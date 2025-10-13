@@ -9,9 +9,15 @@ const globalErrHandler = (
   next: NextFunction
 ) => {
   const statusCode = err.statusCode || 500;
+  let message;
+  console.log(err);
+  if (err.name === "ValidationError") {
+    const messageArray = Object.values(err.errors).map((e: any) => e.message);
+    message = messageArray.join(", ");
+  }
 
   return res.status(statusCode).json({
-    message: err.message,
+    message: message ? message : err.message,
     errorStack: config.ENV === "development" ? err.stack : "",
   });
 };
