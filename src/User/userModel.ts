@@ -9,6 +9,12 @@ const userSchema = new Schema<IUser>(
     },
     email: {
       type: String,
+      validate: {
+        validator: (v) => {
+          return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v);
+        },
+        message: (props) => `${props.value} is not a valid email.`,
+      },
       required: [true, "Email is required"],
       unique: true,
     },
@@ -22,7 +28,10 @@ const userSchema = new Schema<IUser>(
     role: {
       type: String,
       required: [true, "User's role is required"],
-      enum: ["Admin", "Staff", "User"],
+      enum: {
+        values: ["Admin", "Staff", "User"],
+        message: "{VALUE} is not supported",
+      },
       default: "User",
     },
   },
