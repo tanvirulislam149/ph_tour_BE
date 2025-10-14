@@ -8,11 +8,12 @@ const globalErrHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  const statusCode = err.statusCode || 500;
+  let statusCode = err.statusCode || 500;
   let message;
   if (err.name === "ValidationError") {
     const messageArray = Object.values(err.errors).map((e: any) => e.message);
     message = messageArray.join(", ");
+    statusCode = 400;
   }
 
   return res.status(statusCode).json({
