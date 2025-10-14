@@ -37,7 +37,7 @@ const registerUser = async (
           expiresIn: "7d",
         }
       );
-      res.json({ accessToken: token });
+      res.status(201).json({ accessToken: token });
     } catch (error) {
       return next(
         createHttpError(500, error || "Error while creating jwt token.")
@@ -50,4 +50,41 @@ const registerUser = async (
   }
 };
 
-export { registerUser };
+const loginUser = async (req: Request, res: Response, next: NextFunction) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return next(createHttpError(400, "Please provide email and password."));
+  }
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return next(createHttpError(400, "User doesn't exist."));
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return next(createHttpError(400, "Password didn't match."));
+    }
+
+    try {
+      const token = jwt.sign(
+        { user_id: user._id },
+        config.JWT_TOKEN as string,
+        {
+          expiresIn: "7d",
+        }
+      );
+      res.status(201).json({ accessToken: token });
+    } catch (error) {
+      return next(
+        createHttpError(500, error || "Error while creating jwt token.")
+      );
+    }
+  } catch (error) {
+    return next(createHttpError(500, "Error while searching for user."));
+  }
+};
+
+export { registerUser, loginUser };
