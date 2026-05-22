@@ -1,33 +1,36 @@
 {
-  "name": "node_be",
+  "name": "ph_tour",
   "version": "1.0.0",
-  "description": "",
-  "main": "./dist/server.js",
+  "description": "Backend of a tour management website",
+  "homepage": "https://github.com/tanvirulislam149/e-book_MERN_BE#readme",
+  "bugs": {
+    "url": "https://github.com/tanvirulislam149/e-book_MERN_BE/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanvirulislam149/e-book_MERN_BE.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "nodemon ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "dependencies": {
-    "@types/http-errors": "^2.0.5",
-    "@types/jsonwebtoken": "^9.0.10",
-    "bcrypt": "^6.0.0",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "http-errors": "^1.4.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.20.0",
-    "mongoose": "^8.19.1",
-    "ts-node": "^10.9.2"
-  },
   "devDependencies": {
-    "@types/bcrypt": "^6.0.0",
-    "@types/express": "^5.0.3",
-    "@types/node": "^24.7.2",
-    "typescript": "^5.9.3"
+    "@types/cors": "^2.8.19",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.6.2",
+    "zod": "^4.4.3"
   }
 }
