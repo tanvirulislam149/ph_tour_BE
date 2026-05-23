@@ -2,13 +2,13 @@
   "name": "ph_tour",
   "version": "1.0.0",
   "description": "Backend of a tour management website",
-  "homepage": "https://github.com/tanvirulislam149/e-book_MERN_BE#readme",
+  "homepage": "https://github.com/tanvirulislam149/ph_tour_BE#readme",
   "bugs": {
-    "url": "https://github.com/tanvirulislam149/e-book_MERN_BE/issues"
+    "url": "https://github.com/tanvirulislam149/ph_tour_BE/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tanvirulislam149/e-book_MERN_BE.git"
+    "url": "git+https://github.com/tanvirulislam149/ph_tour_BE.git"
   },
   "license": "ISC",
   "author": "",
