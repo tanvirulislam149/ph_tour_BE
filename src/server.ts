@@ -1,17 +1,15 @@
 import mongoose from "mongoose";
 import app from "./app";
-import dotenv from "dotenv";
-
-dotenv.config();
+import envVars from "./config/env";
 
 const startServer = async () => {
   try {
-    await mongoose.connect(process.env.DB_URI as string);
+    await mongoose.connect(envVars.DB_URI);
 
     console.log("Connected to MongoDB");
 
-    app.listen(process.env.PORT || 5000, () => {
-      console.log("Server is running on port " + (process.env.PORT || 5000));
+    app.listen(envVars.PORT, () => {
+      console.log("Server is running on port " + envVars.PORT);
     });
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
