@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { model } from "mongoose";
 import { IAuthProvider, IsActive, IUser, Role } from "./user.interface";
 import { boolean } from "zod";
 const { Schema } = mongoose;
@@ -37,3 +37,7 @@ const userSchema = new Schema<IUser>(
     versionKey: false, // Disable the __v field in DB
   },
 );
+
+const User = model<IUser>("User", userSchema);
+
+export default User;
