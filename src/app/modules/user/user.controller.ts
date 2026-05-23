@@ -10,10 +10,10 @@ const createUser = async (req: Request, res: Response) => {
     res.status(httpstatus.CREATED).json({
       success: true,
       message: "User created successfully",
-      data: user,
+      user: user,
     });
   } catch (error: any) {
-    res.status(httpstatus.INTERNAL_SERVER_ERROR).json({
+    res.status(httpstatus.BAD_REQUEST).json({
       success: false,
       message: "Failed to create user",
       error: error.message,
