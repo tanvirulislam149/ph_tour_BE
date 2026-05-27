@@ -15,7 +15,6 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
   } catch (error: any) {
     console.log("From controller", error);
     next(error);
-    // res.json(error);
   }
 };
 

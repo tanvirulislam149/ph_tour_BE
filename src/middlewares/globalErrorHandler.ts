@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { Error } from "mongoose";
 import envVars from "../config/env";
+import { AppError } from "../app/errorHelper/errorHelper";
 
 export const globarlErrorHandler = (
   err: any,
@@ -8,10 +9,12 @@ export const globarlErrorHandler = (
   res: Response,
   next: NextFunction,
 ) => {
-  console.log(err);
   const statusCode = 500;
-  const message =
-    `Something went wrong!!! ${err.message}` || "Internal Server Error";
+  const message = err.message || "Internal Server Error";
+
+  if (err instanceof AppError) {
+    err.statusCode = err.statusCode || statusCode;
+  }
 
   res.status(statusCode).json({
     success: false,
